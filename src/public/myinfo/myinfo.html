@@ -1,0 +1,15 @@
+<h1 class="text-center">My Info</h1>
+<div ng-show="myInfoController.userLoggedIn" class="text-center">
+  <p>First Name: {{ myInfoController.user.firstName }}</p>
+  <p>Last Name: {{ myInfoController.user.lastName }}</p>
+  <p>Email: {{ myInfoController.user.email }}</p>
+  <p>Phone: {{ myInfoController.user.phone }}</p>
+  <p>Favorite Food: {{ myInfoController.user.favoriteItem}}</p>
+  <img class="img-responsive" width="250" height="150" class="center-block"
+  ng-src="http://www.davidchuchinabistro.com/images/{{myInfoController.user.favoriteItem}}.jpg"
+  alt="{{myInfoController.user.favoriteItem}}">
+</div>
+<div ng-show="!myInfoController.userLoggedIn" class="text-center">
+  <p>Not Signed Up Yet! <span><a ui-sref="public.signup">Sign Up Now!</a><span></p>
+
+</div>

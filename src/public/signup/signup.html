@@ -1,0 +1,99 @@
+<div class = "container">
+  <fieldset>
+    <h1 id="signUpFormTitle">Sign Up</h1>
+    <ng-form name = "signupForm">
+      <input type="text"
+      class="form-control"
+      name="first_name"
+      ng-model="signupController.user.firstName"
+      minlength=0
+      placeholder="First Name"
+      required
+      >
+
+      <span
+      ng-show="(signupForm.first_name.$error.minlength || signupForm.first_name.$error.required) && signupForm.first_name.$touched"
+      >
+        First Name is Required
+      </span>
+      <br>
+      <input type="text"
+      class="form-control"
+      name="last_name"
+      ng-model="signupController.user.lastName"
+      minlength=0
+      placeholder="Last Name"
+      required
+      >
+
+      <span
+      ng-show="(signupForm.last_name.$error.minlength || signupForm.last_name.$error.required) && signupForm.last_name.$touched"
+      >
+        Last Name is Required
+      </span>
+      <br>
+      <input type="email"
+      class="form-control"
+      name="email"
+      ng-model="signupController.user.email"
+      minlength=0
+      placeholder="Email (email@email.com)"
+      required
+      >
+
+      <span
+      ng-show="(signupForm.email.$invalid && signupForm.email.$touched)"
+      >
+        Email Invalid
+      </span>
+      <br>
+      <input type="text"
+      class="form-control"
+      name="phone"
+      ng-model="signupController.user.phone"
+      minlength=0
+      placeholder="Phone ###-###-####"
+      pattern="(\d{3})-(\d{3})-(\d{4})"
+      required
+      >
+
+      <span
+      ng-show="(signupForm.phone.$invalid && signupForm.phone.$touched)"
+      >
+        Phone Invalid
+      </span>
+      <br>
+      <input type="text"
+      class="form-control"
+      name="favorite_item"
+      ng-model="signupController.user.favoriteItem"
+      minlength=0
+      placeholder="Favorite Item Short Name (L1)"
+      required
+      my-directive
+      ng-change="signupController.validateFavItem()"
+      >
+
+      <span
+      ng-show="(!signupController.favItemExists && signupForm.favorite_item.$touched)"
+      >
+        No Such Item Exists
+      </span>
+      <span
+      ng-show="(signupForm.favorite_item.$error.minlength || signupForm.favorite_item.$error.required) && signupForm.favorite_item.$touched"
+      >
+        Favorite Item Required
+      </span>
+
+      <br>
+      <button
+      class="btn btn-primary"
+      ng-disabled="signupForm.$invalid || !signupController.favItemExists"
+      ng-click="signupController.submit()"
+      >Submit</button>
+    </form>
+    <div id="info" ng-if="signupController.completed">
+        <p>Your information ahs been saved.</p>
+      </div>
+  </fieldset>
+</div>
